@@ -18,6 +18,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.firefox.options import Options
 
+import os
+import sys
 import user_info
 
 # TOKEN = user_info.slack_token
