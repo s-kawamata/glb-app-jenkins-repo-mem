@@ -104,7 +104,7 @@ try:
 except NoSuchElementException as e:
   print(e)
 
-#print("ログイン完了しました")
+print("ログイン完了しました")
 time.sleep(7)
 
 # File Name
