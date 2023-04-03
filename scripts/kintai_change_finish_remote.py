@@ -53,7 +53,7 @@ import user_info
 
 # Firefox
 options = Options()
-firefox_profile = "./g8ejaa2r.default"
+firefox_profile = "./zcy7yqlt.default-release-1679651078178"
 fp = webdriver.FirefoxProfile(firefox_profile)
 options.headless = True
 firefox_capabilities = webdriver.DesiredCapabilities.FIREFOX
