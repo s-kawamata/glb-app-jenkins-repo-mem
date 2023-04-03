@@ -53,7 +53,7 @@ import user_info
 options = Options()
 firefox_profile = "./g8ejaa2r.default"
 fp = webdriver.FirefoxProfile(firefox_profile)
-options.headless = False
+options.headless = True
 firefox_capabilities = webdriver.DesiredCapabilities.FIREFOX
 driver = webdriver.Firefox(options=options,firefox_profile=fp,capabilities=firefox_capabilities)
 driver.set_window_size(1920, 1080)
