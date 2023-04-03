@@ -1,0 +1,28 @@
+def shResult() {
+    script {
+        sh script:'python3 scripts/kintai_change_start_both.py', returnStdout: true
+    }
+}
+
+pipeline {
+  agent any
+
+  stages {
+    stage('勤務開始(在宅4時間以内)') {
+      steps {
+              script {
+                result = shResult()
+              }
+      }
+    }
+  } 
+  
+  post {
+        success {
+            slackSend  channel: "#glb-app-mgr-notification", teamDomain: "all-apc", tokenCredentialId: "slack_webhook_token_mgr", color: 'good', message: "Success: 勤怠管理JOB \n ${result}"
+        }
+        failure {
+            slackSend  channel: "#glb-app-mgr-notification", teamDomain: "all-apc", tokenCredentialId: "slack_webhook_token_mgr", color: 'danger', message: "Failed: 勤怠管理JOB \n ${result}"
+        }
+  }
+}
