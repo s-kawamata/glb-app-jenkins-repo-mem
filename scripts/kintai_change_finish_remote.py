@@ -105,6 +105,10 @@ except NoSuchElementException as e:
 #print("ログイン完了しました")
 time.sleep(7)
 
+# File Name
+FILENAME = os.path.join(os.path.dirname(os.path.abspath(__file__)), "image/screen.png")
+driver.save_screenshot(FILENAME)
+
 print("処理開始します。")
 #iframeを切り替える
 iframe=driver.find_element_by_xpath("//*[@id='0665F00000117vk']")
