@@ -51,7 +51,7 @@ import user_info
 
 # Firefox
 options = Options()
-firefox_profile = "../g8ejaa2r.default"
+firefox_profile = "./g8ejaa2r.default"
 fp = webdriver.FirefoxProfile(firefox_profile)
 options.headless = False
 firefox_capabilities = webdriver.DesiredCapabilities.FIREFOX
