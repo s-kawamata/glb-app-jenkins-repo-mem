@@ -53,7 +53,7 @@ import user_info
 
 # Firefox
 options = Options()
-firefox_profile = "./zcy7yqlt.default-release-1679651078178"
+firefox_profile = "./zcy7yqlt.default-release-1679651078178" #Firefoxのprofileのパスを指定
 fp = webdriver.FirefoxProfile(firefox_profile)
 options.headless = True
 firefox_capabilities = webdriver.DesiredCapabilities.FIREFOX
@@ -67,12 +67,13 @@ driver.get('https://www.google.com/?hl=ja')
 try:
   #ここからSSO処理
   time.sleep(5)
-  elm = driver.find_element_by_xpath("//*[@class='gb_1e']")
+  elm = driver.find_element_by_xpath("//*[@class='gb_e']")
   actions = ActionChains(driver)
   actions.move_to_element(elm)
   actions.perform()
-  driver.find_element_by_xpath("//*[@aria-label='Google アプリ']").click()
   actions.reset_actions()
+  driver.find_element_by_xpath("//*[@aria-label='Google アプリ']").click()
+
   time.sleep(5)
   iframe = driver.find_element_by_xpath("//iframe[@role='presentation']")
   driver.switch_to.frame(iframe)
@@ -106,10 +107,6 @@ except NoSuchElementException as e:
 
 print("ログイン完了しました")
 time.sleep(7)
-
-# File Name
-FILENAME = os.path.join(os.path.dirname(os.path.abspath(__file__)), "image/screen.png")
-driver.save_screenshot(FILENAME)
 
 print("処理開始します。")
 #iframeを切り替える

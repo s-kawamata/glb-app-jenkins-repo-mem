@@ -38,42 +38,101 @@ print("処理開始します。")
 # CHROMEDRIVER = "C:\chromedriver.exe"
 # driver = webdriver.Chrome(CHROMEDRIVER)
 
-driver = webdriver.Remote(
-     command_executor="http://selenium:4444/wd/hub",
-     desired_capabilities=DesiredCapabilities.CHROME.copy(),
- )
+# driver = webdriver.Remote(
+#      command_executor="http://selenium:4444/wd/hub",
+#      desired_capabilities=DesiredCapabilities.CHROME.copy(),
+#  )
 
-#ウインドウサイズを変更
-driver.set_window_size(1920,1080)
+# #ウインドウサイズを変更
+# driver.set_window_size(1920,1080)
+
+# # Googleアクセス
+# driver.get('https://login.salesforce.com/?locale=jp')
+
+# #ログイン開始
+# print("ログイン開始します。")
+# try:
+#   #ログイン画面にてクレデンシャルを入力
+#   driver.find_element_by_xpath('//*[@id="username"]').send_keys(user_info.salesforce_id)
+#   driver.find_element_by_xpath('//*[@id="password"]').send_keys(user_info.salesforce_passwd)
+#   #ログインボタンをクリック
+#   driver.find_element_by_xpath('//*[@id="Login"]').click()
+#   time.sleep(5)
+
+#   #指定したdriverに対して最大で10秒間待つように設定する
+#   wait = WebDriverWait(driver, 120)
+#   wait.until(expected_conditions.invisibility_of_element_located((By.ID, "//*[contains(text(), 'モバイルデバイスを確認')]")))
+#   time.sleep(5)
+#   #指定された要素が非表示になるまで待機する(要素は約5秒後に非表示になる)
+#   elm = driver.find_element_by_xpath('//*[@id="phSearchContainer"]/div/div[1]')
+#   if elm :
+#     pass 
+#   else :
+#     raise ValueError("ログインに失敗しました")
+# except NoSuchElementException as e:
+#   print(e)
+
+# print("ログイン完了しました")
+# time.sleep(10)
+
+# Firefox
+options = Options()
+firefox_profile = "./zcy7yqlt.default-release-1679651078178" #Firefoxのprofileのパスを指定
+fp = webdriver.FirefoxProfile(firefox_profile)
+options.headless = True
+firefox_capabilities = webdriver.DesiredCapabilities.FIREFOX
+driver = webdriver.Firefox(options=options,firefox_profile=fp,capabilities=firefox_capabilities)
+driver.set_window_size(1920, 1080)
 
 # Googleアクセス
-driver.get('https://login.salesforce.com/?locale=jp')
+driver.get('https://www.google.com/?hl=ja')
 
 #ログイン開始
-print("ログイン開始します。")
 try:
-  #ログイン画面にてクレデンシャルを入力
-  driver.find_element_by_xpath('//*[@id="username"]').send_keys(user_info.salesforce_id)
-  driver.find_element_by_xpath('//*[@id="password"]').send_keys(user_info.salesforce_passwd)
-  #ログインボタンをクリック
-  driver.find_element_by_xpath('//*[@id="Login"]').click()
+  #ここからSSO処理
   time.sleep(5)
+  elm = driver.find_element_by_xpath("//*[@class='gb_e']")
+  actions = ActionChains(driver)
+  actions.move_to_element(elm)
+  actions.perform()
+  actions.reset_actions()
+  driver.find_element_by_xpath("//*[@aria-label='Google アプリ']").click()
 
-  #指定したdriverに対して最大で10秒間待つように設定する
-  wait = WebDriverWait(driver, 120)
-  wait.until(expected_conditions.invisibility_of_element_located((By.ID, "//*[contains(text(), 'モバイルデバイスを確認')]")))
   time.sleep(5)
-  #指定された要素が非表示になるまで待機する(要素は約5秒後に非表示になる)
-  elm = driver.find_element_by_xpath('//*[@id="phSearchContainer"]/div/div[1]')
+  iframe = driver.find_element_by_xpath("//iframe[@role='presentation']")
+  driver.switch_to.frame(iframe)
+  time.sleep(5)
+  elm = driver.find_element_by_xpath("//*[contains(text(), 'TeamSpirit')]")
+  driver.execute_script("window.scrollTo(0, " + str(elm.location['y']) + ");")
+  driver.find_element_by_xpath("//*[contains(text(), 'TeamSpirit')]").click()
+  time.sleep(5)
+  handle_array = driver.window_handles
+  driver.switch_to.window(handle_array[1])
+  
+  #お知らせウィンドウが開いていた場合は閉じる
+  notification_window = driver.find_elements_by_xpath("//div[@data-dojo-attach-point='titleBar']/*[contains(text(), 'お知らせ')]")
+  
+  if notification_window:
+    y_loca = driver.find_element_by_xpath("//tr[@id='dialogInfoBottom']//button[@class='std-button2 close_button']")
+    driver.execute_script("window.scrollTo(0, " + str(y_loca.location['y']) + ");")
+    y_loca.click()
+  else:
+    pass
+    
+  time.sleep(5)
+  elm = driver.find_elements_by_xpath("//a[@title='勤務表タブ']")
   if elm :
     pass 
   else :
     raise ValueError("ログインに失敗しました")
+
 except NoSuchElementException as e:
   print(e)
 
 print("ログイン完了しました")
-time.sleep(10)
+time.sleep(7)
+
+print("処理開始します。")
 
 print("勤務登録処理開始します。")
 #iframeを切り替える
