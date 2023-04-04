@@ -1,6 +1,6 @@
 def shResult() {
     script {
-        sh script:'python3 scripts/kintai_change_start_syussya.py', returnStdout: true ${departure_station} ${departure_station}
+        sh script:'python3 scripts/kintai_change_start_syussya.py', returnStdout: true ${departure_station} ${destination_station}
     }
 }
 
