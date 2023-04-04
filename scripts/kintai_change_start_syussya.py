@@ -22,22 +22,22 @@ import user_info
 
 print("処理開始します。")
 
-# TOKEN = user_info.slack_token
-# CHANNEL = 'akatsuka_test'
+TOKEN = user_info.slack_token
+CHANNEL = 'akatsuka_test'
 
-# url = "https://slack.com/api/chat.postMessage"
-# headers = {"Authorization": "Bearer "+TOKEN}
-# data  = {
-#   'channel': CHANNEL,
-#   'text': ''+ user_info.destination_station +'にて勤務開始します'
-# }
+url = "https://slack.com/api/chat.postMessage"
+headers = {"Authorization": "Bearer "+TOKEN}
+data  = {
+  'channel': CHANNEL,
+  'text': ''+ user_info.destination_station +'にて勤務開始します'
+}
 
-# r = requests.post(url, headers=headers, data=data)
+r = requests.post(url, headers=headers, data=data)
 
-# if "\'ok\': True" in str(r.json()):
-#   print("SlackへのPOST成功")
-# else:
-#   print("SlackへのPOST失敗")
+if "\'ok\': True" in str(r.json()):
+  print("SlackへのPOST成功")
+else:
+  print("SlackへのPOST失敗")
 
 # #ドライバー指定でChromeブラウザを開く
 # CHROMEDRIVER = "C:\chromedriver.exe"
