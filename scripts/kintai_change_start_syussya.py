@@ -194,10 +194,10 @@ driver.implicitly_wait(5)
 select.select_by_value('a1M5F00000S8BBiUAN')#交通費を選択
 time.sleep(5)
 
-#driver.find_element_by_xpath('//*[@id="DlgExpDetailStFrom"]').send_keys(user_info.departure_station)#出発駅を入力
-driver.find_element_by_xpath('//*[@id="DlgExpDetailStFrom"]').send_keys(departure_station)#出発駅を入力
-#driver.find_element_by_xpath('//*[@id="DlgExpDetailStTo"]').send_keys(user_info.destination_station)#到着駅を入力
-driver.find_element_by_xpath('//*[@id="DlgExpDetailStTo"]').send_keys(destination_station)#到着駅を入力
+driver.find_element_by_xpath('//*[@id="DlgExpDetailStFrom"]').send_keys(user_info.departure_station)#出発駅を入力
+#driver.find_element_by_xpath('//*[@id="DlgExpDetailStFrom"]').send_keys(departure_station)#出発駅を入力
+driver.find_element_by_xpath('//*[@id="DlgExpDetailStTo"]').send_keys(user_info.destination_station)#到着駅を入力
+#driver.find_element_by_xpath('//*[@id="DlgExpDetailStTo"]').send_keys(destination_station)#到着駅を入力
 time.sleep(5)
 
 #虫眼鏡をクリック
