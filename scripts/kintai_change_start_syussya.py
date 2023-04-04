@@ -22,22 +22,22 @@ import user_info
 
 print("処理開始します。")
 
-TOKEN = user_info.slack_token
-CHANNEL = 'akatsuka_test'
+# TOKEN = user_info.slack_token
+# CHANNEL = 'akatsuka_test'
 
-url = "https://slack.com/api/chat.postMessage"
-headers = {"Authorization": "Bearer "+TOKEN}
-data  = {
-  'channel': CHANNEL,
-  'text': ''+ user_info.destination_station +'にて勤務開始します'
-}
+# url = "https://slack.com/api/chat.postMessage"
+# headers = {"Authorization": "Bearer "+TOKEN}
+# data  = {
+#   'channel': CHANNEL,
+#   'text': ''+ user_info.destination_station +'にて勤務開始します'
+# }
 
-r = requests.post(url, headers=headers, data=data)
+# r = requests.post(url, headers=headers, data=data)
 
-if "\'ok\': True" in str(r.json()):
-  print("SlackへのPOST成功")
-else:
-  print("SlackへのPOST失敗")
+# if "\'ok\': True" in str(r.json()):
+#   print("SlackへのPOST成功")
+# else:
+#   print("SlackへのPOST失敗")
 
 # #ドライバー指定でChromeブラウザを開く
 # CHROMEDRIVER = "C:\chromedriver.exe"
@@ -195,9 +195,7 @@ select.select_by_value('a1M5F00000S8BBiUAN')#交通費を選択
 time.sleep(5)
 
 driver.find_element_by_xpath('//*[@id="DlgExpDetailStFrom"]').send_keys(user_info.departure_station)#出発駅を入力
-#driver.find_element_by_xpath('//*[@id="DlgExpDetailStFrom"]').send_keys(departure_station)#出発駅を入力
 driver.find_element_by_xpath('//*[@id="DlgExpDetailStTo"]').send_keys(user_info.destination_station)#到着駅を入力
-#driver.find_element_by_xpath('//*[@id="DlgExpDetailStTo"]').send_keys(destination_station)#到着駅を入力
 time.sleep(5)
 
 #虫眼鏡をクリック
