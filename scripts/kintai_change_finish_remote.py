@@ -20,22 +20,22 @@ from selenium.webdriver.firefox.options import Options
 
 import user_info
 
-# TOKEN = user_info.slack_token
-# CHANNEL = 'akatsuka_test'
+TOKEN = user_info.slack_token
+CHANNEL = 'akatsuka_test'
 
-# url = "https://slack.com/api/chat.postMessage"
-# headers = {"Authorization": "Bearer "+TOKEN}
-# data  = {
-#   'channel': CHANNEL,
-#   'text': 'リモワ開始します'
-# }
+url = "https://slack.com/api/chat.postMessage"
+headers = {"Authorization": "Bearer "+TOKEN}
+data  = {
+  'channel': CHANNEL,
+  'text': 'リモワ開始します'
+}
 
-# r = requests.post(url, headers=headers, data=data)
+r = requests.post(url, headers=headers, data=data)
 
-# if "\'ok\': True" in str(r.json()):
-#   print("SlackへのPOST成功")
-# else:
-#   print("SlackへのPOST失敗")
+if "\'ok\': True" in str(r.json()):
+  print("SlackへのPOST成功")
+else:
+  print("SlackへのPOST失敗")
 
 # #ドライバー指定でChromeブラウザを開く
 # CHROMEDRIVER = "C:\chromedriver.exe"
