@@ -120,6 +120,6 @@ else:
 
 # driver.switch_to.default_content()
 
-#完了処理
-print("処理が正常に完了しました。")
-driver.quit()
+# #完了処理
+# print("処理が正常に完了しました。")
+# driver.quit()
