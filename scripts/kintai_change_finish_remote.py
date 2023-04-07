@@ -55,7 +55,7 @@ firefox_profile = "./zcy7yqlt.default-release-1679651078178" #Firefoxのprofile�
 fp = webdriver.FirefoxProfile(firefox_profile)
 options.headless = True
 firefox_capabilities = webdriver.DesiredCapabilities.FIREFOX
-driver = webdriver.Firefox(options=options,firefox_profile=fp,capabilities=firefox_capabilities,)
+driver = webdriver.Firefox(options=options,firefox_profile=fp,capabilities=firefox_capabilities)
 driver.set_window_size(1920, 1080)
 
 # Googleアクセス
