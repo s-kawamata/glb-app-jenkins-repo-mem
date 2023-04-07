@@ -17,12 +17,9 @@ pipeline {
     }
   } 
   
-//   post {
-//         success {
-//             slackSend  channel: "#glb-app-mgr-notification", teamDomain: "all-apc", tokenCredentialId: "slack_webhook_token_mgr", color: 'good', message: "Success: 勤怠管理JOB \n ${result}"
-//         }
-//         failure {
-//             slackSend  channel: "#glb-app-mgr-notification", teamDomain: "all-apc", tokenCredentialId: "slack_webhook_token_mgr", color: 'danger', message: "Failed: 勤怠管理JOB \n ${result}"
-//         }
-//   }
+   post {
+         success {
+             slackSend  channel: "#akatsuka_test", teamDomain: "all-apc", tokenCredentialId: "slack_webhook_token_mem", color: 'good', message: "リモワ完了します"
+         }
+   }
 }
