@@ -20,7 +20,7 @@ from selenium.webdriver.firefox.options import Options
 
 import user_info
 
-TOKEN = xoxp-296963997159-1226278144609-4760576575920-56e4aed8493536b4629c6601815b4887
+TOKEN = "xoxp-296963997159-1226278144609-4760576575920-56e4aed8493536b4629c6601815b4887"
 CHANNEL = 'akatsuka_test'
 
 url = "https://slack.com/api/chat.postMessage"
