@@ -20,14 +20,14 @@ from selenium.webdriver.firefox.options import Options
 
 import user_info
 
-TOKEN = "xoxp-296963997159-1226278144609-5063914246311-d9c14cdd62b85fb8c4a52a0547942f42"
+TOKEN = "user_info.slack_token"
 CHANNEL = 'fujihira_test'
 
 url = "https://slack.com/api/chat.postMessage"
 headers = {"Authorization": "Bearer "+TOKEN}
 data  = {
   'channel': CHANNEL,
-  'text': 'リモワ完了します'
+  'text': 'リモワ開始します'
 }
 
 r = requests.post(url, headers=headers, data=data)
