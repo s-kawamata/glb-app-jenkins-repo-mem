@@ -19,7 +19,7 @@ pipeline {
   
    post {
          success {
-             slackSend  channel: "#akatsuka_test", teamDomain: "all-apc", tokenCredentialId: "slack_webhook_token_mem", color: 'good', message: "リモワ完了します"
+             slackSend  channel: "#fujihira_test", teamDomain: "all-apc", tokenCredentialId: "slack_webhook_token_mem", color: 'good', message: "リモワ完了します"
          }
    }
 }
