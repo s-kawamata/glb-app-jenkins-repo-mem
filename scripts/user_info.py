@@ -1,6 +1,6 @@
 
 #slack token
-slack_token = 'xoxp-296963997159-1226278144609-5075607406485-6b71a6ad5c4a196e77baa4ff102f166c'
+slack_token = 'xoxp-296963997159-1226278144609-5077552305157-91b83ee58da62d81f0c4db6bea516adb'
 
 #salseforceログインID&PW 
 salesforce_id = "k_fujihira@ap-com.co.jp"
